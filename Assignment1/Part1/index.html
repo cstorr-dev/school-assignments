@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travel Blog – Home</title>
+  <style>
+    /* ========= Global Variables ========= */
+    :root{
+      /* brand color themes for each block/continent */
+      --c1:#f36a2e;   /* orange theme for Europe */
+      --c2:#3b86d9;   /* blue theme for Asia */
+      --c3:#4eb46b;   /* green theme for America */
+      --c4:#f2c037;   /* yellow theme for Africa */
+      --ink:#111;     /* main text color */
+    }
+
+    html{
+      scroll-behavior:smooth; /* smooth scroll when clicking navigation links */
+    }
+
+    body{
+      font-family: Arial, Helvetica, sans-serif; /* clean, readable font */
+      margin: 24px;                              /* space around page edges */
+      color: var(--ink);                         /* apply defined ink color */
+      line-height: 1.5;                          /* improve line spacing */
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:40px;
+      font-weight:700; /* bold, large title for emphasis */
+    }
+
+    /* ========= Section Headers (Continents) ========= */
+    /* each section heading gets a themed background */
+    #europe h2 {
+      background: var(--c1);
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 4px; /* soften edges */
+    }
+    #asia h2 {
+      background: var(--c2);
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    #america h2 {
+      background: var(--c3);
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    #africa h2 {
+      background: var(--c4);
+      color: #333;           /* dark text for contrast on yellow */
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    /* ========= Top Navigation Blocks ========= */
+    .blocks{
+      display:flex;  /* arrange blocks horizontally */
+      gap:18px;      /* space between blocks */
+      margin: 8px 0 28px;
+      padding:0;
+    }
+
+    .block{
+      width:56px; height:56px;
+      border-radius:50%;             /* circular buttons */
+      display:grid; place-items:center; /* center number inside */
+      text-decoration:none;          /* remove underline on link */
+      color:#fff; font-weight:700; font-size:20px;
+      box-shadow:0 2px 6px rgba(0,0,0,.18); /* subtle depth */
+      transition: transform .1s ease;
+    }
+
+    /* hover effect makes blocks feel interactive */
+    .block:hover{ 
+      box-shadow:0 4px 12px rgba(0,0,0,.22); /* deeper shadow */
+      filter: brightness(0.8);               /* slightly darken */
+      cursor: pointer;                       /* show clickability */
+    }
+
+    /* pressed (active) effect simulates button push */
+    .block:active{ transform: translateY(1px); }
+
+    /* assign background colors for each block */
+    .block[data-n="1"]{ background:var(--c1); }
+    .block[data-n="2"]{ background:var(--c2); }
+    .block[data-n="3"]{ background:var(--c3); }
+    .block[data-n="4"]{ background:var(--c4); color:#333; } /* dark text on yellow */
+
+    /* ========= Section Containers ========= */
+    section{
+      margin: 28px 0 36px;
+      padding: 12px 14px;
+      border-left: 4px solid #e5e7eb; /* vertical accent line */
+      scroll-margin-top: 12px;        /* offsets anchor scrolling */
+    }
+
+    section:target{
+      background:#fafafa;          /* highlight active section */
+      border-left-color:#9aa1a8;   /* darker accent for focus */
+    }
+
+    h2{
+      margin:0 0 12px;
+      font-size:28px;
+    }
+
+    /* ========= Lists ========= */
+    ol{ margin: 0; padding-left: 22px; } /* indent ordered list */
+    ol > li{ margin: 8px 0; }            /* space between countries */
+    ul{ margin: 6px 0 6px 18px; list-style: circle; } /* cities use circle bullets */
+
+    /* ========= Back to Top Links ========= */
+    .back{
+      margin-top:8px;
+      display:inline-block;
+      font-size:14px;
+      text-decoration:none;
+      color:#2563eb; /* blue for visibility */
+    }
+    .back:hover{ text-decoration:underline; }
+
+    /* divider lines between sections */
+    hr{
+      border:none;
+      border-top:1px solid #e5e7eb;
+      margin:16px 0;
+    }
+
+    .footer-note{ font-size:14px; margin-top:20px }
+
+    /* ========= Nested List Coloring ========= */
+    /* color first-level (countries) differently per region */
+    #asia  ol > li { color: #1e40af; font-weight: 600; }
+    #europe ol > li { color: #991b1b; font-weight: 600; }
+    #america ol > li { color: #065f46; font-weight: 600; }
+    #africa ol > li { color: #92400e; font-weight: 600; }
+
+    /* color nested items (cities) lighter tones per region */
+    #asia   ul li { color: #3b82f6; font-weight: 400; }
+    #europe ul li { color: #ef4444; font-weight: 400; }
+    #america ul li { color: #22c55e; font-weight: 400; }
+    #africa ul li { color: #f59e0b; font-weight: 400; }
+  </style>
+</head>
+<body>
+  <h1>Travel Blog</h1>
+
+  <!-- navigation: number blocks linking to each continent section -->
+  <nav class="blocks" aria-label="Quick jump">
+    <a class="block" data-n="1" href="#europe"  title="Go to Europe">1</a>
+    <a class="block" data-n="2" href="#asia"    title="Go to Asia">2</a>
+    <a class="block" data-n="3" href="#america" title="Go to America">3</a>
+    <a class="block" data-n="4" href="#africa"  title="Go to Africa">4</a>
+  </nav>
+
+  <!-- ========= Section 1: Europe ========= -->
+  <section id="europe" aria-labelledby="h-europe">
+    <h2 id="h-europe">Destination 1: Europe</h2>
+    <ol>
+      <li>France
+        <ul>
+          <li>Paris</li>
+          <li>Nice</li>
+          <li>Marseille</li>
+        </ul>
+      </li>
+      <li>Italy
+        <ul>
+          <li>Rome</li>
+          <li>Florence</li>
+          <li>Venice</li>
+        </ul>
+      </li>
+      <li>Greece
+        <ul>
+          <li>Athens</li>
+          <li>Thessaloniki</li>
+          <li>Santorini</li>
+        </ul>
+      </li>
+    </ol>
+    <a class="back" href="#">↑ Back to top</a>
+  </section>
+  <hr>
+
+  <!-- ========= Section 2: Asia ========= -->
+  <section id="asia" aria-labelledby="h-asia">
+    <h2 id="h-asia">Destination 2: Asia</h2>
+    <ol>
+      <li>Japan
+        <ul>
+          <li>Tokyo</li>
+          <li>Kyoto</li>
+          <li>Osaka</li>
+        </ul>
+      </li>
+      <li>China
+        <ul>
+          <li>Beijing</li>
+          <li>Shanghai</li>
+          <li>Xi'an</li>
+        </ul>
+      </li>
+      <li>India
+        <ul>
+          <li>New Delhi</li>
+          <li>Mumbai</li>
+          <li>Jaipur</li>
+        </ul>
+      </li>
+    </ol>
+    <a class="back" href="#">↑ Back to top</a>
+  </section>
+  <hr>
+
+  <!-- ========= Section 3: America ========= -->
+  <section id="america" aria-labelledby="h-america">
+    <h2 id="h-america">Destination 3: America</h2>
+    <ol>
+      <li>USA
+        <ul>
+          <li>New York City</li>
+          <li>Los Angeles</li>
+          <li>Chicago</li>
+        </ul>
+      </li>
+      <li>Brazil
+        <ul>
+          <li>Rio de Janeiro</li>
+          <li>São Paulo</li>
+          <li>Salvador</li>
+        </ul>
+      </li>
+      <li>Canada
+        <ul>
+          <li>Toronto</li>
+          <li>Vancouver</li>
+          <li>Montreal</li>
+        </ul>
+      </li>
+    </ol>
+    <a class="back" href="#">↑ Back to top</a>
+  </section>
+  <hr>
+
+  <!-- ========= Section 4: Africa ========= -->
+  <section id="africa" aria-labelledby="h-africa">
+    <h2 id="h-africa">Destination 4: Africa</h2>
+    <ol>
+      <li>South Africa
+        <ul>
+          <li>Cape Town</li>
+          <li>Johannesburg</li>
+          <li>Durban</li>
+        </ul>
+      </li>
+      <li>Egypt
+        <ul>
+          <li>Cairo</li>
+          <li>Luxor</li>
+          <li>Sharm El Sheikh</li>
+        </ul>
+      </li>
+      <li>Morocco
+        <ul>
+          <li>Marrakech</li>
+          <li>Casablanca</li>
+          <li>Fez</li>
+        </ul>
+      </li>
+    </ol>
+    <a class="back" href="#">↑ Back to top</a>
+  </section>
+</body>
+</html>

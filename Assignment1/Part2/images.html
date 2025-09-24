@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Destinations</title>
+  <style>
+    /* ========= Global Layout ========= */
+    body {
+      font-family: Arial, sans-serif; /* simple, readable font */
+      margin: 20px;                   /* whitespace around the page */
+    }
+
+    h1 {
+      margin-bottom: 16px;            /* space between title and table */
+    }
+
+    /* ========= Base Table Styling ========= */
+    table {
+      border-collapse: collapse; /* merge borders for a clean look */
+      width: 60%;                /* table takes up 60% of page width */
+      text-align: center;        /* center content by default */
+    }
+
+    th, td {
+      border: 1px solid #ccc; /* light gray cell borders */
+      padding: 10px;          /* space inside cells */
+    }
+
+    th {
+      background: #f5f5f5; /* light background for headers */
+      font-weight: bold;   /* emphasize header text */
+    }
+
+    /* ========= Images Inside Table ========= */
+    img {
+      max-width: 150px;    /* prevent images from being too large */
+      height: auto;        /* keep aspect ratio */
+      display: block;      /* block so margin auto centers it */
+      margin: 0 auto;      /* center images horizontally */
+      transition: opacity 0.3s ease; /* smooth hover fade */
+    }
+
+    img:hover {
+      opacity: 0.7; /* fade images on hover for interactivity */
+    }
+
+    /* ========= Enhanced Table Styling ========= */
+    /* alternate background colors for readability (zebra striping) */
+    .table tbody tr:nth-child(odd) {
+      background-color: #fafafa;
+    }
+    .table tbody tr:nth-child(even) {
+      background-color: #eaf6f6;
+    }
+
+    /* highlight row when hovered to help scanning */
+    .table tbody tr:hover {
+      background-color: #d1f0f0;
+    }
+
+    /* table container border with color + rounded corners */
+    .table {
+      border: 2px solid teal; /* themed border */
+      border-radius: 8px;     /* soft edges */
+      overflow: hidden;       /* make border-radius apply properly */
+    }
+
+    /* make headers bold with more padding for clarity */
+    .table th {
+      font-weight: 700;
+      padding: 12px;
+      color: teal; /* give headers a pop of color */
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Travel Destinations</h1>
+
+  <!-- wrapper div in case we want to constrain width or add shadow later -->
+  <div class="table-wrap">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Destination</th>
+          <th>Attraction</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Destination">Paris</td>
+          <td data-label="Attraction">
+            <!-- Eiffel Tower image -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg" alt="Eiffel Tower">
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Destination">Rome</td>
+          <td data-label="Attraction">
+            <!-- Colosseum image -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Colosseo_2020.jpg" alt="Colosseum">
+          </td>
+        </tr>
+        <tr>
+          <td data-label="Destination">New York</td>
+          <td data-label="Attraction">
+            <!-- Statue of Liberty image -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Statue_of_Liberty_7.jpg" alt="Statue of Liberty">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
